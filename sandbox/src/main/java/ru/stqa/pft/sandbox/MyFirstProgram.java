@@ -7,7 +7,7 @@ public class MyFirstProgram {
    hello("user");
    hello("Gulzhan");
 
- Point p = new Point(3, 2 , 3, 4);
+ Point p = new Point(3, 3 , 2, 4);
  System.out.println("Расстояние между точками A ( x1=" + p.x1 + "; y1=" + p.y1 + ") и Б (x2=" + p.x2 + "; y2=" + p.y2 + ") = " + distance(p));
  }
   /*
