@@ -6,11 +6,10 @@ import org.testng.annotations.Test;
 /**
  * Created by User on 12.06.2017.
  */
-public class PointTest {
-
+public class PointErrorTest2 {
   @Test
   public void testDistance() {
-    Point p = new Point(0, 1, 0, 1);
-    Assert.assertEquals(p.distance(), 1.4142135623730951);
+    Point p = new Point(12, 12, 8, 16);
+    Assert.assertEquals(p.distance(), 33);
   }
 }
