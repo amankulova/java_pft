@@ -8,7 +8,7 @@ public class MyFirstProgram {
    hello("Gulzhan");
 
  Point p = new Point(3, 3 , 2, 4);
- System.out.println("Расстояние между точками A ( x1=" + p.x1 + "; y1=" + p.y1 + ") и Б (x2=" + p.x2 + "; y2=" + p.y2 + ") = " + distance(p));
+ System.out.println("Расстояние между точками A ( x1=" + p.x1 + "; y1=" + p.y1 + ") и Б (x2=" + p.x2 + "; y2=" + p.y2 + ") = " + p.distance());
  }
   /*
     Square s = new Square(5);
@@ -19,9 +19,7 @@ public class MyFirstProgram {
    }
  */
 
-  public static double distance (Point p) {
-  return Math.sqrt(Math.pow((p.x2 - p.x1), 2) + Math.pow((p.y2 - p.y1), 2));
-}
+
 	public static void hello(String somebody) {
   System.out.println("Hello, " + somebody + "!");
   }
