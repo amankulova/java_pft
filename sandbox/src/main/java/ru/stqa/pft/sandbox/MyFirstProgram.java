@@ -7,9 +7,12 @@ public class MyFirstProgram {
    hello("user");
    hello("Gulzhan");
 
- Point p = new Point(3, 3 , 2, 4);
- System.out.println("Расстояние между точками A ( x1=" + p.x1 + "; y1=" + p.y1 + ") и Б (x2=" + p.x2 + "; y2=" + p.y2 + ") = " + p.distance());
+ Point p1 = new Point(1, 4);
+ Point p2 = new Point(2,4);
+   System.out.println("Расстояние между точками А(" + p1.x + ";" + p1.y + ") и Б(" + p2.x + ";" + p2.y + ") = " + p1.distance(p2));
+
  }
+
   /*
     Square s = new Square(5);
     System.out.println("Площадь квадрата со стороной " + s.l + "=" + s.area());
@@ -22,5 +25,4 @@ public class MyFirstProgram {
 	public static void hello(String somebody) {
   System.out.println("Hello, " + somebody + "!");
   }
-
-}
+  }
