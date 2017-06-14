@@ -10,7 +10,8 @@ public class PointErrorTest {
 
 @Test
 public void testDistance() {
-  Point p = new Point(6, 6);
-  Assert.assertEquals(p.distance(p2), 4);
+  Point p1 = new Point(5, 9);
+  Point p2 = new Point(22, 34);
+  Assert.assertEquals(p1.distance(p2), 36);
   }
 }

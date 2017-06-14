@@ -9,7 +9,8 @@ import org.testng.annotations.Test;
 public class PointErrorTest2 {
   @Test
   public void testDistance() {
-    Point p = new Point(12, 12);
-    Assert.assertEquals(p.distance(p2), 33.0);
+    Point p1 = new Point(3, 12);
+    Point p2 = new Point(6, 12);
+    Assert.assertEquals(p1.distance(p2), 3);
   }
 }
