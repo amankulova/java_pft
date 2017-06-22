@@ -35,4 +35,8 @@ public class ContactHelper extends HelperBase {
   public void selectContact() {
     click(By.name("selected[]"));
   }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
 }
