@@ -36,7 +36,11 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
-  public void initGroupModification() {
-    click(By.name("edit"));
+  public void initContactModification() {
+    click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void submitContactModificationAndAutoReturnHomepage() {
+    click(By.name("update"));
   }
 }
