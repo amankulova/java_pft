@@ -54,4 +54,8 @@ public class ContactHelper extends HelperBase {
   }
   }
 
+  public void returnToContactPage() {
+    wd.findElement(By.linkText("home")).click();
+
+  }
 }
