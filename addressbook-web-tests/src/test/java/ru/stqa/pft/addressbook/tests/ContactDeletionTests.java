@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class ContactDeletionTests extends TestBase {
@@ -10,5 +11,7 @@ public class ContactDeletionTests extends TestBase {
     app.getNavigationHelper().gotoHomePage();
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContactsAndAutoReturnToHomepage();
+    app.getContactHelper().isAlertPresent();
+
   }
 }

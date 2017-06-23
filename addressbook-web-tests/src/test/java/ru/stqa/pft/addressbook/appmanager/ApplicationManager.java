@@ -62,4 +62,7 @@ public class ApplicationManager {
   public void setContactHelper(ContactHelper contactHelper) {
     this.contactHelper = contactHelper;
   }
+
+
 }
+
