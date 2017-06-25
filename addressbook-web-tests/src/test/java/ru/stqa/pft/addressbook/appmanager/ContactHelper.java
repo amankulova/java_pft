@@ -64,7 +64,7 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void createContact(ContactData contact, boolean b) {
+  public void createContact(ContactData contact) {
     initContactCreation();
     fillContactForm(contact);
     submitContactCreation();
@@ -72,6 +72,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isThereAContact() {
-    return isElementPresent(By.name("selected[]"));
+     return isElementPresent(By.name("selected[]"));
   }
 }
