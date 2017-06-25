@@ -9,12 +9,12 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactModificationTests extends TestBase {
 
   @Test
-
   public void testGroupModification() {
     app.getNavigationHelper().gotoHomePage();
-    app.getContactHelper().selectContact();
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData("Тестовый", "Тест", "6666", "t@mail.ru"));
-    app.getContactHelper().submitContactModificationAndAutoReturnHomepage();
+    app.getContactHelper().submitContactModification();
+    app.getContactHelper().returnToHomePage();
   }
+
 }
