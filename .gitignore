@@ -20,3 +20,4 @@ addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/ContactMo
 addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/GroupDeletionTests.class
 addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/GroupModificationTests.class
 *.class
+*.java
