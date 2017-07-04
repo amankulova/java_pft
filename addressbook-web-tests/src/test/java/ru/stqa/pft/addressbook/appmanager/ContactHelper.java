@@ -32,7 +32,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+   wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedContacts() {
@@ -40,7 +40,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModification() {
-    click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
+    //click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
+    click(By.cssSelector("img[alt='Edit']"));
   }
 
   public void submitContactModification() {
@@ -91,5 +92,6 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+
 
 }
