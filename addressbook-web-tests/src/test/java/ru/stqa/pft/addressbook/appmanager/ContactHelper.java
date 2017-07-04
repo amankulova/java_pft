@@ -26,14 +26,6 @@ public class ContactHelper extends HelperBase {
   public void fillContactForm(ContactData contactData) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
-    type(By.name("home"), contactData.getHomephone());
-    type(By.name("email"), contactData.getEmail());
-
- //   if (creation) {
- //     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
- //   } else {
- //     Assert.assertFalse(isElementPresent(By.name("new_group")));
- //   }
   }
 
   public void submitContactCreation() {
@@ -88,8 +80,10 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.cssSelector("[name='selected[]']"));
     for (WebElement element : elements) {
-      String name = element.getText();
-      ContactData contact = new ContactData(name, null, null, null, null);
+      String firstname = element.getText();
+      String lastname = element.getText();
+      String id = wd.findElement(By.tagName("input")).getAttribute("value");
+      ContactData contact = new ContactData(id, firstname, lastname);
       contacts.add(contact);
     }
     return contacts;
