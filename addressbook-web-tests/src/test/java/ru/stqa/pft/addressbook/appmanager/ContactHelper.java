@@ -31,17 +31,27 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void selectContact(int index) {
-   wd.findElements(By.name("selected[]")).get(index).click();
-  }
 
   public void deleteSelectedContacts() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void initContactModification() {
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+  }
+
+  public void initContactModification(int index) {
     //click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
-    click(By.cssSelector("img[alt='Edit']"));
+    //wd.findElements(By.name("selected[]")).get(index).click();
+    // click(By.name("edit"));
+    // click(By.xpath("table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+
+    wd.findElements(By.cssSelector("img[alt='Edit']")).get(index).click();
+
+
+    //click(By.cssSelector("img[alt='Edit']"));
+
+
   }
 
   public void submitContactModification() {

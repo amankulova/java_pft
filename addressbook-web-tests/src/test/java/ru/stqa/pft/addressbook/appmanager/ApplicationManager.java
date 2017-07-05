@@ -55,12 +55,12 @@ public class ApplicationManager {
     return contactHelper;
   }
 
-  public NavigationHelper getNavigationHelper() {
-    return navigationHelper;
-  }
-
   public void setContactHelper(ContactHelper contactHelper) {
     this.contactHelper = contactHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 
 
