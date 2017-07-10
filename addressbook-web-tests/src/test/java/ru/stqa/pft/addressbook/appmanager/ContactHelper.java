@@ -42,22 +42,23 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void selectContactByID(int id) {
+ public void selectContactByID(int id) {
 //    wd.findElements(By.name("selected[]")).get(index).click();
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-  }
+ wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+}
 
 
-  public void initContactModification() {
+ public void initContactModification(int id) {
     //click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
     //wd.findElements(By.name("selected[]")).get(index).click();
-    // click(By.name("edit"));
+//    click(By.name("edit"));
     // click(By.xpath("table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+   wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
 
-   // wd.findElements(By.cssSelector("img[alt='Edit']")).get(index).click();
+  // wd.findElements(By.cssSelector("img[alt='Edit']")).get(index).click();
 
 
-   click(By.cssSelector("img[alt='Edit']"));
+   //click(By.cssSelector("img[alt='Edit']"));
 
 
   }
@@ -88,8 +89,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact) {
-   selectContactByID(contact.getId());
-   initContactModification();
+   //selectContactByID(contact.getId());
+  initContactModification(contact.getId());
    fillContactForm(contact);
    submitContactModification();
    returnToHomePage();
