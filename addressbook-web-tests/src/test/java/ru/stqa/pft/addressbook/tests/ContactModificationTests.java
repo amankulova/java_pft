@@ -4,9 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by User on 22.06.2017.
@@ -26,20 +28,17 @@ public class ContactModificationTests extends TestBase {
   @Test
   public void testGroupModification() {
 
-    List<ContactData> before = app.contact().list();
-    int index = before.size() - 1;
+    Set<ContactData> before = app.contact().all();
+    ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .withId(before.get(index).getId()).withFirstname("Тестовый5").withLastname("Тест5");
-    app.contact().modify(index, contact);
-    List<ContactData> after = app.contact().list();
+            .withId(modifiedContact.getId()).withFirstname("Тестовый5").withLastname("Тест5");
+    app.contact().modify(contact);
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size());
 
 
-    before.remove(index);
+    before.remove(modifiedContact);
     before.add(contact);
-    Comparator<? super ContactData> byID = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byID);
-    after.sort(byID);
     Assert.assertEquals(before, after);
   }
 
