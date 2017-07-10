@@ -22,3 +22,4 @@ addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/GroupModi
 *.class
 *.java
 *.class
+*.class
