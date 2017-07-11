@@ -5,7 +5,6 @@ public class ContactData {
   private String firstname;
 
 
-
   private String lastname;
 
   @Override

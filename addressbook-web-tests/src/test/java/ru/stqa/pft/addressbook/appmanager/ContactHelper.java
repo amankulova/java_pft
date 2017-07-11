@@ -5,10 +5,9 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by User on 22.06.2017.
@@ -38,13 +37,13 @@ public class ContactHelper extends HelperBase {
   }
 
 
- public void selectContactByID(int id) {
- wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-}
+  public void selectContactByID(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
 
 
- public void initContactModification(int id) {
-   wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+  public void initContactModification(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
   public void submitContactModification() {
@@ -73,10 +72,10 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact) {
-  initContactModification(contact.getId());
-   fillContactForm(contact);
-   submitContactModification();
-   returnToHomePage();
+    initContactModification(contact.getId());
+    fillContactForm(contact);
+    submitContactModification();
+    returnToHomePage();
   }
 
   public void delete(ContactData contact) {
@@ -86,7 +85,7 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
-   public boolean isThereAContact() {
+  public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
@@ -95,9 +94,8 @@ public class ContactHelper extends HelperBase {
   }
 
 
-
-  public Set<ContactData> all() {
-    Set<ContactData> contacts = new HashSet<>();
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
