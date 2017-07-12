@@ -15,17 +15,18 @@ public class ContactData {
   private String email1;
   private String email2;
   private String email3;
+  private String allEmails;
+
 
   public String getAllEmails() {
-    return allEmails;
-  }
+   return allEmails;
+ }
 
   public ContactData withAllEmails(String allEmails) {
-    this.allEmails = allEmails;
-    return this;
+  this.allEmails = allEmails;
+  return this;
   }
 
-  private String allEmails;
 
   public String getEmail1() {
     return email1;
