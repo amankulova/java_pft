@@ -10,7 +10,7 @@ import static ru.stqa.pft.addressbook.tests.TestBase.app;
  */
 public class ContactAddressTests {
 
-  @Test
+  @Test(enabled = false)
   public void  testContactAdresses() {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
