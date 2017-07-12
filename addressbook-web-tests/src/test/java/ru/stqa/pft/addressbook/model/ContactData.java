@@ -28,15 +28,13 @@ public class ContactData {
   }
 
 
-
-
   public String getAllEmails() {
-   return allEmails;
- }
+    return allEmails;
+  }
 
   public ContactData withAllEmails(String allEmails) {
-  this.allEmails = allEmails;
-  return this;
+    this.allEmails = allEmails;
+    return this;
   }
 
 

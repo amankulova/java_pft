@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -16,6 +15,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class ContactPhoneTest extends TestBase {
 
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().homePage();
+    if (app.contact().all().size() == 0) {
+      app.contact().create(new ContactData()
+              .withFirstname("тест")
+              .withEmail1("test@mail.ru").withEmail2("test2@mail.ru").withEmail3("test3@mail.ru")
+              .withMobilePhone("77766655").withWorkPhone("76666")
+              .withAddress("test"));
+    }
+
+  }
+
   @Test
   public void testContactPhones() {
     app.goTo().homePage();
@@ -28,13 +40,13 @@ public class ContactPhoneTest extends TestBase {
 
   private String mergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-            .stream().filter((s) -> ! s.equals(""))
+            .stream().filter((s) -> !s.equals(""))
             .map(ContactPhoneTest::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
-  public static String cleaned (String phone) {
-      return phone.replaceAll("\\s","").replaceAll("[-()]", "");
+  public static String cleaned(String phone) {
+    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
-  }
+}
