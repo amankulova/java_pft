@@ -11,7 +11,7 @@ import static ru.stqa.pft.addressbook.tests.TestBase.app;
 /**
  * Created by User on 12.07.2017.
  */
-public class ContactAddressTests {
+public class ContactAddressTests extends TestBase{
 
   @BeforeMethod
   public void ensurePreconditions() {
