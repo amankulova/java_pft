@@ -80,8 +80,7 @@ public class ContactDataGenerator {
                 contact.getFirstname(), contact.getLastname(),
                 contact.getAddress(),
                 contact.getEmail1(), contact.getEmail2(), contact.getEmail3(),
-                contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
-          contact.getPhoto()));
+                contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()));
       }
     }
   }
@@ -99,8 +98,8 @@ public class ContactDataGenerator {
               .withEmail3(String.format("Почтовый адрес 3 %s", i))
               .withHomePhone(String.format("Городской номер %s", i))
               .withMobilePhone(String.format("Мобильный номер %s", i))
-              .withWorkPhone(String.format("Рабочий номер %s", i))
-        .withPhoto(new File("src/test/resources/stru.png")));
+              .withWorkPhone(String.format("Рабочий номер %s", i)));
+    //    .withPhoto(new File("src/test/resources/stru.png")));
 
     }
     return contacts;
