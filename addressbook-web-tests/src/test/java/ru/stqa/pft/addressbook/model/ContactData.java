@@ -27,11 +27,12 @@ public class ContactData {
   private String email1;
   @Expose
   private String email2;
+  @Expose
   private String email3;
   private String allEmails;
-
+  @Expose
   private String address;
-
+  @Expose
   private File photo;
 
   public File getPhoto() {
