@@ -76,19 +76,19 @@ public class ContactDataGenerator {
     System.out.println(new File(".").getAbsolutePath());
     try (Writer writer = new FileWriter(file)) {
       for (ContactData contact : contacts) {
-        writer.write(String.format("%s;%s\n;%s\n,%s,%s,%s\n,%s,%s,%s\n",
+        writer.write(String.format("%s;%s\n;%s\n;%s;%s;%s\n;%s;%s;%s\n",
                 contact.getFirstname(), contact.getLastname(),
                 contact.getAddress(),
                 contact.getEmail1(), contact.getEmail2(), contact.getEmail3(),
-                contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()));
-        //    contact.getPhoto()));
+                contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
+          contact.getPhoto()));
       }
     }
   }
 
 
   private static List<ContactData> generateContacts(int count) {
-  //  File photo = new File("src/test/resources/stru.png") ;
+  // File photo = new File("src/test/resources/stru.png");
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i =0; i < count; i++) {
       contacts.add(new ContactData().withFirstname(String.format("Имя %s", i))
@@ -99,8 +99,8 @@ public class ContactDataGenerator {
               .withEmail3(String.format("Почтовый адрес 3 %s", i))
               .withHomePhone(String.format("Городской номер %s", i))
               .withMobilePhone(String.format("Мобильный номер %s", i))
-              .withWorkPhone(String.format("Рабочий номер %s", i)));
-        //      .withPhoto(photo));
+              .withWorkPhone(String.format("Рабочий номер %s", i))
+        .withPhoto(new File("src/test/resources/stru.png")));
 
     }
     return contacts;
