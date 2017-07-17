@@ -20,7 +20,7 @@ public class GroupCreationTests extends TestBase {
   public Iterator<Object[]> validGroups() throws IOException {
 
     List<Object[]> list = new ArrayList<Object[]>();
-    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.cvs")));
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
     String line = reader.readLine();
     while (line != null) {
       String[] split = line.split(";");
