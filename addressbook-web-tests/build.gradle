@@ -13,4 +13,16 @@ repositories {
         compile 'com.google.code.gson:gson:2.8.1'
 
     }
+
+    task testGroups (type: Test) {
+        useTestNG {
+            suites 'src/test/resources/testng-groups.xml'
+        }
+    }
+
+    task testContacts (type: Test) {
+        useTestNG {
+            suites 'src/test/resources/testng-contacts.xml'
+        }
+    }
 }
