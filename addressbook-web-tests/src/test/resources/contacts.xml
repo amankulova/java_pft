@@ -1,0 +1,14 @@
+<list>
+  <contact>
+    <firstname>Имя 0</firstname>
+    <lastname>Фамилия 0</lastname>
+  </contact>
+  <contact>
+    <firstname>Имя 1</firstname>
+    <lastname>Фамилия 1</lastname>
+  </contact>
+  <contact>
+    <firstname>Имя 2</firstname>
+    <lastname>Фамилия 2</lastname>
+  </contact>
+</list>
