@@ -14,11 +14,9 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
-.xml
-.class
-
-
-
 *.xml
 *.log
 *.class
+*.xml___jb_old___
+*.xml
+*.xml
