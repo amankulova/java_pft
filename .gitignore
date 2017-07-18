@@ -1,24 +1,7 @@
-.gradle
-/build/
 
-# Ignore Gradle GUI config
-gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-# Cache of project
-.gradletasknamecache
-
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
-.idea/workspace.xml
-addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/appmanager/ContactHelper.class
-addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/appmanager/GroupHelper.class
-addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/ContactDeletionTests.class
-addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/ContactModificationTests.class
-addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/GroupDeletionTests.class
-addressbook-web-tests/build/classes/test/ru/stqa/pft/addressbook/tests/GroupModificationTests.class
+*.log
 *.class
-*.class
-*.class
+*.xml
+*.bin
+*.xml
+*.lock

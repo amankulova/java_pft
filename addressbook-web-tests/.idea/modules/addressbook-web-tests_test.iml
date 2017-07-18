@@ -15,6 +15,7 @@
     <orderEntry type="library" name="Gradle: org.hamcrest:java-hamcrest:2.0.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.beust:jcommander:1.72" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.1" level="project" />
+    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.1.5" level="project" />
     <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-api:3.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:3.4.0" level="project" />
@@ -59,6 +60,8 @@
     <orderEntry type="library" name="Gradle: com.thoughtworks.xstream:xstream-hibernate:1.4.10" level="project" />
     <orderEntry type="library" name="Gradle: com.thoughtworks.xstream:xstream-jmh:1.4.10" level="project" />
     <orderEntry type="library" name="Gradle: com.thoughtworks.xstream:xstream-benchmark:1.4.10" level="project" />
+    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.5" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.16" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:4.2.5.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.openjdk.jmh:jmh-core:1.19" level="project" />
     <orderEntry type="library" name="Gradle: net.sf.kxml:kxml2-min:2.3.0" level="project" />
