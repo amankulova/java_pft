@@ -17,7 +17,6 @@ public class ContactDeletionTests extends TestBase {
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstname("Тестовый").withLastname("Тест"));
     }
-
   }
 
   @Test
@@ -29,8 +28,5 @@ public class ContactDeletionTests extends TestBase {
     assertThat(app.group().count(), equalTo(before.size() - 1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(before.without(deletedContact)));
-
   }
-
-
 }

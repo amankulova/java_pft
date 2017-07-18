@@ -36,7 +36,6 @@ public class ContactCreationTests extends TestBase {
       xStream.processAnnotations(ContactData.class);
       List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
       return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
-
     }
   }
 
@@ -69,8 +68,6 @@ public class ContactCreationTests extends TestBase {
               before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
 
     }
-
-
   }
 
 

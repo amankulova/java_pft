@@ -25,7 +25,6 @@ public class ContactPhoneTest extends TestBase {
               .withMobilePhone("77766655").withWorkPhone("76666")
               .withAddress("test"));
     }
-
   }
 
   @Test
@@ -33,9 +32,7 @@ public class ContactPhoneTest extends TestBase {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-
   }
 
   private String mergePhones(ContactData contact) {
@@ -48,5 +45,4 @@ public class ContactPhoneTest extends TestBase {
   public static String cleaned(String phone) {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
-
 }

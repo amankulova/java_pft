@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -46,9 +45,9 @@ public class ContactDataGenerator {
     List<ContactData> contacts = generateContacts(count);
     if (format.equals("csv")) {
       saveAsCsv(contacts, new File(file));
-    } else if (format.equals("xml")){
+    } else if (format.equals("xml")) {
       saveAsXml(contacts, new File(file));
-    } else if (format.equals("json")){
+    } else if (format.equals("json")) {
       saveAsJson(contacts, new File(file));
     } else {
       System.out.println("Unrecognized format " + format);
@@ -63,6 +62,7 @@ public class ContactDataGenerator {
       writer.write(json);
     }
   }
+
   private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
     XStream xstream = new XStream();
     xstream.processAnnotations(ContactData.class);
@@ -85,11 +85,9 @@ public class ContactDataGenerator {
     }
   }
 
-
   private static List<ContactData> generateContacts(int count) {
-  // File photo = new File("src/test/resources/stru.png");
     List<ContactData> contacts = new ArrayList<ContactData>();
-    for (int i =0; i < count; i++) {
+    for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFirstname(String.format("Имя %s", i))
               .withLastname(String.format("Фамилия %s", i))
               .withAddress(String.format("Адрес %s", i))
@@ -99,8 +97,6 @@ public class ContactDataGenerator {
               .withHomePhone(String.format("Городской номер %s", i))
               .withMobilePhone(String.format("Мобильный номер %s", i))
               .withWorkPhone(String.format("Рабочий номер %s", i)));
-    //    .withPhoto(new File("src/test/resources/stru.png")));
-
     }
     return contacts;
   }

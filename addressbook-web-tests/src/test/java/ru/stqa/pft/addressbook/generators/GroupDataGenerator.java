@@ -6,7 +6,6 @@ import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.tools.benchmark.targets.Person;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;

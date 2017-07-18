@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by User on 12.07.2017.
  */
-public class ContactAddressTests extends TestBase{
+public class ContactAddressTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -31,9 +31,5 @@ public class ContactAddressTests extends TestBase{
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
-
-
   }
-
-
 }

@@ -33,17 +33,13 @@ public class ContactEmailTests extends TestBase {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-
     assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
 
   }
-
 
   private String mergeEmails(ContactData contact) {
     return Arrays.asList(contact.getEmail1(), contact.getEmail2(), contact.getEmail3())
             .stream().filter((s) -> !s.equals(""))
             .collect(Collectors.joining("\n"));
   }
-
-
 }
