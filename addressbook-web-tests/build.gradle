@@ -12,6 +12,8 @@ repositories {
         compile 'com.thoughtworks.xstream:xstream-distribution:1.4.10'
         compile 'com.google.code.gson:gson:2.8.1'
         compile 'ch.qos.logback:logback-classic:1.1.5'
+        compile 'mysql:mysql-connector-java:5.1.38'
+
     }
 
     task testGroups(type: Test) {
