@@ -23,6 +23,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
 
+
   @DataProvider
   public Iterator<Object[]> validContactsFromXml() throws IOException {
     File photo = new File("src/test/resources/stru.png");
@@ -64,13 +65,16 @@ public class ContactCreationTests extends TestBase {
     app.goTo().homePage();
       Contacts before = app.db().contacts();
       app.contact().create(contact);
-      assertThat(app.group().count(), equalTo(before.size() + 1));
+    app.goTo().homePage();
+    assertThat(app.group().count(), equalTo(before.size() + 1));
       Contacts after = app.db().contacts();
 
       assertThat(after, equalTo(
               before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    verifyContactListInUI();
 
-    }
+
+  }
   }
 
 
