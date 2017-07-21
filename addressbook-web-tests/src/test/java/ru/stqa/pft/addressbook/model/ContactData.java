@@ -44,10 +44,10 @@ public class ContactData {
   @Transient
   private String allPhones;
 
-  @Expose
-  @Column(name = "photo")
-  @Type(type = "text")
-  private String photo;
+//  @Expose
+  //@Column(name = "photo")
+  //@Type(type = "text")
+  //private String photo;
 
   @Transient
   @Expose
@@ -67,14 +67,15 @@ public class ContactData {
   @Transient
   private String address;
 
-  public File getPhoto() {
-    return new File(photo);
-  }
+//  public File getPhoto() {
+ //   return new File(photo);
+  //}
 
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
-    return this;
-  }
+//  public ContactData withPhoto(File photo) {
+ //   this.photo = photo.getPath();
+//    return this;
+ // }
+ // }
 
   public String getAddress() {
     return address;
