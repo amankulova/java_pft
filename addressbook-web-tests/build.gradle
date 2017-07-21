@@ -13,7 +13,7 @@ repositories {
         compile 'com.google.code.gson:gson:2.8.1'
         compile 'ch.qos.logback:logback-classic:1.1.5'
         compile 'mysql:mysql-connector-java:5.1.38'
-
+        compile 'org.hibernate:hibernate-core:5.2.10.Final'
     }
 
     task testGroups(type: Test) {
