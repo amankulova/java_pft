@@ -45,6 +45,39 @@ public class DbHelper {
     return new Contacts(result);
   }
 
+  public ContactData contactById(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    ContactData contact = (ContactData) session.createQuery("from ContactData where id = '" + id + "'").getSingleResult();
+    session.getTransaction().commit();
+    session.close();
+    return contact;
+
+  }
+
+  public Contacts contactNotInGroup() {
+    Contacts result = new Contacts();
+    Groups groupsFull = groups();
+    Contacts contactsFull = contacts();
+    for (ContactData contact : contactsFull) {
+      if (contact.getGroups().size() < groupsFull.size()) {
+        result.add(contact);
+      }
+    }
+    return new Contacts(result);
+  }
+
+
+  public Contacts contactAreInGroup() {
+    Contacts result = new Contacts();
+    Contacts contacts = contacts();
+    for (ContactData contact : contacts) {
+      if (contact.getGroups().size() > 0) {
+        result.add(contact);
+      }
+    }
+    return new Contacts(result);
+  }
 
 
 }
