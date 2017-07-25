@@ -13,20 +13,17 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import java.util.List;
 
 
-/**
- * Created by User on 22.06.2017.
- */
 public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
-  public void initContactCreation() {
-    click(By.linkText("add new"));
+  public void submitContactCreation() {
+    click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
@@ -37,88 +34,68 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
 
-  //  if (creation) {
-   //   if (contactData.getGroups().size() > 0) {
-    //    Assert.assertTrue(contactData.getGroups().size() == 1);
-     //   new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
-     // }
-    //} else
-     // Assert.assertFalse(isElementPresent(By.name("new_group")));
+    if (creation) {
+
+     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      Assert.assertTrue(isElementPresent(By.name("new_group")));
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
+    }
+
+  public void modify(ContactData contact) {
+    initContactModificationById(contact.getId());
+    fillContactForm(contact, false);
+    submitContactModification();
+    contactCache = null;
+    gotoHomePage();
   }
 
-
-  public void submitContactCreation() {
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+  public void initContactModificationById(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
+  public void selectContactById (int id) {
+    wd.findElement(By.id("" + id)).click();
+  }
 
   public void deleteSelectedContacts() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-
-  public void selectContactByID(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-  }
-
-
   public void submitContactModification() {
     click(By.name("update"));
   }
 
-  public void returnToHomePage() {
-    wd.findElement(By.linkText("home")).click();
-
-  }
-
-  public boolean isAlertPresent() {
-    try {
-      wd.switchTo().alert().accept();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
   public void create(ContactData contact) {
     initContactCreation();
-    fillContactForm(contact);
+    fillContactForm(contact, true);
     submitContactCreation();
     contactCache = null;
-    returnToHomePage();
-  }
-
-  public void modify(ContactData contact) {
-    initContactModificationById(contact.getId());
-    fillContactForm(contact);
-    submitContactModification();
-    contactCache = null;
-    returnToHomePage();
+    gotoHomePage();
   }
 
   public void delete(ContactData contact) {
-    selectContactByID(contact.getId());
+    selectContactById(contact.getId());
     deleteSelectedContacts();
     isAlertPresent();
     contactCache = null;
-    returnToHomePage();
+    gotoHomePage();
   }
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int getContactCount() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
   private Contacts contactCache = null;
-
   public Contacts all() {
     if (contactCache != null) {
       return new Contacts(contactCache);
     }
-
     contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -157,29 +134,58 @@ public class ContactHelper extends HelperBase {
 
   }
 
-  public void initContactModificationById(int id) {
-    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+  public void selectRelatedGroup(GroupData relatedGroup) {
+    new Select(wd.findElement(By.xpath("//select[@name='to_group']"))).selectByVisibleText(relatedGroup.getName());
   }
 
-  public void selectContact(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  public void submitAddToGroup() {
+    wd.findElement(By.name("add")).click();
+
   }
 
-  public void addContactToGroup(int id) {
-    wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
-    click(By.cssSelector("input[name='add']"));
+  public void submitRemoveFromGroup() {
+    wd.findElement(By.name("remove")).click();
   }
 
-  public void selectContactById(int id) {
-    wd.findElement(By.xpath("//input[@value='"+id+"']")).click();
+  public void filterByGroup(GroupData relatedGroup) {
+    new Select(wd.findElement(By.xpath("//select[@name='group']"))).selectByVisibleText(relatedGroup.getName());
   }
 
-  public void deleteContactFromGroup(ContactData contact) {
-    selectContactById(contact.getId());
-    click(By.name("remove"));
+  public boolean isContactInGroup(ContactData modifiedContact, GroupData relatedGroup) {
+    boolean passed = false;
+    for (GroupData group : modifiedContact.getGroups()) {
+
+      System.out.println((group.getName() + " - related:" +relatedGroup.getName()));
+      if ((group.getName()).equals(relatedGroup.getName()))
+      {passed = true;}
+    }
+    return passed;
   }
 
-  public void selectDeletedGroupFromList(GroupData group){
-    new Select(wd.findElement(By.xpath("//select[@name = 'group']"))).selectByVisibleText(group.getName());
+  public void gotoHomePage() {
+    wd.findElement(By.linkText("home")).click();
+
   }
+
+  public void initContactCreation() {
+    click(By.linkText("add new"));
+  }
+
+  //public void selectContactById(int id) {
+   // wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+ // }
+
+  public boolean isAlertPresent() {
+    try {
+      wd.switchTo().alert().accept();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
 }
