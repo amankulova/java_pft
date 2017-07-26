@@ -40,7 +40,7 @@ public class ApplicationManager {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
     dbHelper = new DbHelper();
-    if (Objects.equals(browser, BrowserType.FIREFOX)) {
+    if (Objects.equals(browser, BrowserType.CHROME)) {
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     } else if (Objects.equals(browser, BrowserType.CHROME)) {
       wd = new ChromeDriver();

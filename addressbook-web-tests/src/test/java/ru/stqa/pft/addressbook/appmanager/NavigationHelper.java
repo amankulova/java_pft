@@ -21,20 +21,28 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
-  public void addNewPage() {
-    if (isElementPresent(By.tagName("h1"))
-            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
-            && isElementPresent(By.name("submit"))) {return;}
-    click(By.linkText("add new"));
-    //переход по линку add new(contact), только пока не: найден заголовок с тегом h1 и именем "Edit / add address book entry"
-    //плюс кнопка создания контакта с именем submit
+  public void addContactPage() {
+
+    if (isElementPresent ( By.tagName ( "h1" ) )
+            && wd.findElement ( By.tagName ( "h1" ) ).getText ().equals ( "Edit / add address book entry" )
+            && isElementPresent ( By.name ( "submit" ) )) {
+      return;
+    }
+    click ( By.linkText ( "add new" ) );
   }
 
   public void homePage() {
+    if (isElementPresent ( By.id ( "maintable" ) )) {
+      return;
+    }
+    click ( By.linkText ( "home" ) );
+  }
+
+  public void pageSelectedGroup(int id) {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
-    click(By.linkText("home"));
+    click(By.cssSelector("a[href='./?group=" + id + "']"));
   }
 
 }

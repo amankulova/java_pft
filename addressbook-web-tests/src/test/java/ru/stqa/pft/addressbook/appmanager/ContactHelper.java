@@ -19,9 +19,17 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
+  public void homePage() {
+    if (isElementPresent ( By.id ( "maintable" ) )) {
+      return;
+    }
+    click ( By.linkText ( "home" ) );
+  }
+
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
+
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
@@ -35,12 +43,14 @@ public class ContactHelper extends HelperBase {
     type(By.name("email3"), contactData.getEmail3());
 
     if (creation) {
-
-     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
-      Assert.assertTrue(isElementPresent(By.name("new_group")));
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
+
     }
 
   public void modify(ContactData contact) {
@@ -51,9 +61,19 @@ public class ContactHelper extends HelperBase {
     gotoHomePage();
   }
 
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteSelectedContacts();
+    isAlertPresent();
+    contactCache = null;
+    gotoHomePage();
+  }
+
   public void initContactModificationById(int id) {
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
+
+
 
   public void selectContactById (int id) {
     wd.findElement(By.id("" + id)).click();
@@ -67,21 +87,27 @@ public class ContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void create(ContactData contact) {
-    initContactCreation();
+ public void create(ContactData contact, boolean b) {
+   initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();
     contactCache = null;
     gotoHomePage();
   }
 
-  public void delete(ContactData contact) {
-    selectContactById(contact.getId());
-    deleteSelectedContacts();
-    isAlertPresent();
-    contactCache = null;
-    gotoHomePage();
+  public void submitDeletionContacts() {
+    wd.switchTo ().alert ().accept ();
+
   }
+
+
+
+
+  public void enterNewContact() {
+    click ( By.xpath ( "//div[@id='content']/form/input[21]" ) );
+  }
+
+
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
@@ -134,8 +160,11 @@ public class ContactHelper extends HelperBase {
 
   }
 
-  public void selectRelatedGroup(GroupData relatedGroup) {
-    new Select(wd.findElement(By.xpath("//select[@name='to_group']"))).selectByVisibleText(relatedGroup.getName());
+
+  public void choosingGroupToAdd(GroupData group){
+
+    new Select(wd.findElement(By.cssSelector("select[name='to_group']"))).selectByVisibleText(group.getName());
+
   }
 
   public void submitAddToGroup() {
@@ -186,6 +215,50 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public void addContactToGroup(ContactData contact, GroupData assosiateGroup) {
+    selectContactById(contact.getId());
+    choosingGroupToAdd(assosiateGroup);
+    initAddContact();
+  }
+
+  public void initAddContact() {
+    wd.findElement(By.name("add")).click();
+  }
+
+  public void deleteContactFromGroup(GroupData groupData, ContactData contactData ) {
+    choosingGroupToDelete(groupData);
+    selectContactById(contactData.getId());
+    initDeleteContact();
+  }
+
+  public void choosingGroupToDelete(GroupData group){
+
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+  }
+
+  public void initDeleteContact() {
+    wd.findElement(By.name("remove")).click();
+  }
+
+
+  public void selectJoinContactById(int id) {
+
+    wd.findElement(By.cssSelector("input[id ='" + id + "']")).click();
+  }
+  public void addingInGroupById(int id) {
+    click(By.cssSelector("select[name='to_group']"));
+    click(By.cssSelector(".right>select>option[value='" + id + "']"));
+    click(By.name("add"));
+  }
+
+  public void filterGroupsById(int id) {
+    click( By.cssSelector("#right"));
+    click(By.cssSelector("#right>select>option[value='" + id + "']"));
+  }
+  public void removeFromGroup() {
+    click(By.cssSelector("input[name='remove']"));
   }
 
 }

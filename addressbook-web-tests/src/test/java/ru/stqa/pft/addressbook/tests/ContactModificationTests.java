@@ -19,7 +19,13 @@ public class ContactModificationTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
       app.goTo().homePage();
-      app.contact().create(new ContactData().withFirstname("Тестовый").withLastname("Тест"));
+      app.contact().create(new ContactData().withFirstname( "gg" ).withLastname("nnn")
+              .withMobilePhone("88").withHomePhone("87").withWorkPhone("55")
+              .withEmail1("uu").withEmail2("uu").withEmail3("9"), true );
+
+
+
+
 
     }
   }

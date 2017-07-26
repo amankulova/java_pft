@@ -24,7 +24,7 @@ public class ContactEmailTests extends TestBase {
               .withLastname("Пример")
               .withEmail1("test1").withEmail2("test2").withEmail3("test3")
               .withMobilePhone("222 444").withHomePhone("11").withWorkPhone("00 - 00")
-              .withAddress("test"));
+              .withAddress("test"), true);
     }
   }
 
