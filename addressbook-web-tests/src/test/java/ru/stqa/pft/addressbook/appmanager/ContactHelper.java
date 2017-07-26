@@ -50,6 +50,27 @@ public class ContactHelper extends HelperBase {
   }
 
 
+  public void deleteFromGroup(ContactData contact, GroupData group) {
+    app.goTo().contactPage();
+    SelectedGroupById(String.valueOf(group.getId()));
+    selectContactById(contact.getId());
+    click(By.name("remove"));
+    app.goTo().contactPage();
+    SelectedGroupById("");
+    contactCache = null;
+    app.goTo().contactPage();
+  }
+
+
+  private void SelectedGroupById(String id) {
+    new Select(wd.findElement(By.name("group"))).selectByValue(id);
+  }
+
+
+
+
+
+
 
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
