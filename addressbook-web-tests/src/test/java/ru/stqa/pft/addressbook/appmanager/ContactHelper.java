@@ -20,10 +20,10 @@ public class ContactHelper extends HelperBase {
   }
 
   public void homePage() {
-    if (isElementPresent ( By.id ( "maintable" ) )) {
+    if (isElementPresent(By.id("maintable"))) {
       return;
     }
-    click ( By.linkText ( "home" ) );
+    click(By.linkText("home"));
   }
 
   public void submitContactCreation() {
@@ -51,7 +51,7 @@ public class ContactHelper extends HelperBase {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
-    }
+  }
 
   public void modify(ContactData contact) {
     initContactModificationById(contact.getId());
@@ -74,8 +74,7 @@ public class ContactHelper extends HelperBase {
   }
 
 
-
-  public void selectContactById (int id) {
+  public void selectContactById(int id) {
     wd.findElement(By.id("" + id)).click();
   }
 
@@ -87,37 +86,22 @@ public class ContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
- public void create(ContactData contact, boolean b) {
-   initContactCreation();
+  public void create(ContactData contact) {
+    initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();
     contactCache = null;
     gotoHomePage();
   }
 
-  public void submitDeletionContacts() {
-    wd.switchTo ().alert ().accept ();
-
-  }
-
-
-
-
-  public void enterNewContact() {
-    click ( By.xpath ( "//div[@id='content']/form/input[21]" ) );
-  }
-
-
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int count() {
-    return wd.findElements(By.name("selected[]")).size();
-  }
 
   private Contacts contactCache = null;
+
   public Contacts all() {
     if (contactCache != null) {
       return new Contacts(contactCache);
@@ -161,48 +145,17 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public void choosingGroupToAdd(GroupData group){
-
-    new Select(wd.findElement(By.cssSelector("select[name='to_group']"))).selectByVisibleText(group.getName());
-
-  }
-
-  public void submitAddToGroup() {
-    wd.findElement(By.name("add")).click();
-
-  }
-
-  public void submitRemoveFromGroup() {
-    wd.findElement(By.name("remove")).click();
-  }
-
-  public void filterByGroup(GroupData relatedGroup) {
-    new Select(wd.findElement(By.xpath("//select[@name='group']"))).selectByVisibleText(relatedGroup.getName());
-  }
-
-  public boolean isContactInGroup(ContactData modifiedContact, GroupData relatedGroup) {
-    boolean passed = false;
-    for (GroupData group : modifiedContact.getGroups()) {
-
-      System.out.println((group.getName() + " - related:" +relatedGroup.getName()));
-      if ((group.getName()).equals(relatedGroup.getName()))
-      {passed = true;}
-    }
-    return passed;
-  }
-
-  public void gotoHomePage() {
-    wd.findElement(By.linkText("home")).click();
-
-  }
-
   public void initContactCreation() {
     click(By.linkText("add new"));
   }
 
-  //public void selectContactById(int id) {
-   // wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
- // }
+  public void gotoHomePage() {
+    if (isElementPresent ( By.id ( "maintable" ) )) {
+      return;
+    }
+    click ( By.linkText ( "home" ) );
+  }
+
 
   public boolean isAlertPresent() {
     try {
@@ -212,53 +165,8 @@ public class ContactHelper extends HelperBase {
       return false;
     }
   }
-
-  public int getContactCount() {
-    return wd.findElements(By.name("selected[]")).size();
-  }
-
-  public void addContactToGroup(ContactData contact, GroupData assosiateGroup) {
-    selectContactById(contact.getId());
-    choosingGroupToAdd(assosiateGroup);
-    initAddContact();
-  }
-
-  public void initAddContact() {
-    wd.findElement(By.name("add")).click();
-  }
-
-  public void deleteContactFromGroup(GroupData groupData, ContactData contactData ) {
-    choosingGroupToDelete(groupData);
-    selectContactById(contactData.getId());
-    initDeleteContact();
-  }
-
-  public void choosingGroupToDelete(GroupData group){
-
-    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
-  }
-
-  public void initDeleteContact() {
-    wd.findElement(By.name("remove")).click();
-  }
-
-
-  public void selectJoinContactById(int id) {
-
-    wd.findElement(By.cssSelector("input[id ='" + id + "']")).click();
-  }
-  public void addingInGroupById(int id) {
-    click(By.cssSelector("select[name='to_group']"));
-    click(By.cssSelector(".right>select>option[value='" + id + "']"));
-    click(By.name("add"));
-  }
-
-  public void filterGroupsById(int id) {
-    click( By.cssSelector("#right"));
-    click(By.cssSelector("#right>select>option[value='" + id + "']"));
-  }
-  public void removeFromGroup() {
-    click(By.cssSelector("input[name='remove']"));
-  }
-
 }
+
+
+
+

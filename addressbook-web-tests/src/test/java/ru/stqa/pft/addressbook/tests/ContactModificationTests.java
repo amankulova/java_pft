@@ -21,7 +21,7 @@ public class ContactModificationTests extends TestBase {
       app.goTo().homePage();
       app.contact().create(new ContactData().withFirstname( "gg" ).withLastname("nnn")
               .withMobilePhone("88").withHomePhone("87").withWorkPhone("55")
-              .withEmail1("uu").withEmail2("uu").withEmail3("9"), true );
+              .withEmail1("uu").withEmail2("uu").withEmail3("9") );
 
 
 
