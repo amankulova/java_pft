@@ -55,6 +55,7 @@ public class ContactAdditionToGroup extends TestBase {
       contactId = contact.getId();
       app.contact().addition(contact, lastAddedGroup);
       beforeAddedGroups = beforeAdditionGroups.withAdded(lastAddedGroup);
+
     }
    // Groups groupAfter = app.db().contactById(contactId).getGroups();
    // MatcherAssert.assertThat(groupAfter, CoreMatchers.equalTo(beforeAddedGroups));
