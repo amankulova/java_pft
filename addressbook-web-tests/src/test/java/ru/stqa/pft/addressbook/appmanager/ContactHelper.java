@@ -9,8 +9,11 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.List;
+
+import static ru.stqa.pft.addressbook.tests.TestBase.app;
 
 
 public class ContactHelper extends HelperBase {
@@ -19,12 +22,34 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-  public void homePage() {
-    if (isElementPresent(By.id("maintable"))) {
-      return;
-    }
-    click(By.linkText("home"));
+
+
+
+
+  public void addition(ContactData contact, GroupData group) {
+    app.goTo().contactPage();
+    selectContactById(contact.getId());
+    addContactToGroup(group);
+    contactCache = null;
+    app.goTo().contactPage();
   }
+
+  private void addContactToGroup(GroupData group) {
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+    click(By.xpath("//div[@id='content']/form[2]/div[4]/input"));
+  }
+
+  public GroupData getGroupToAddition(Groups groups, ContactData contact) {
+    Groups beforeAdditionGroups = contact.getGroups();
+    for (GroupData group : groups) {
+      if (!beforeAdditionGroups.contains(group)) {
+        return group;
+      }
+    }
+    return null;
+  }
+
+
 
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
@@ -150,10 +175,10 @@ public class ContactHelper extends HelperBase {
   }
 
   public void gotoHomePage() {
-    if (isElementPresent ( By.id ( "maintable" ) )) {
+    if (isElementPresent(By.id("maintable"))) {
       return;
     }
-    click ( By.linkText ( "home" ) );
+    click(By.linkText("home"));
   }
 
 
@@ -165,8 +190,10 @@ public class ContactHelper extends HelperBase {
       return false;
     }
   }
-}
 
+
+
+}
 
 
 

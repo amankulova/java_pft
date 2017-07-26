@@ -62,10 +62,10 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation(ContactData contact) {
     Groups groups = app.db().groups();
 
-    app.goTo().homePage();
+    app.goTo().contactPage();
       Contacts before = app.db().contacts();
       app.contact().create(contact);
-    app.goTo().homePage();
+    app.goTo().contactPage();
     assertThat(app.group().count(), equalTo(before.size() + 1));
       Contacts after = app.db().contacts();
 

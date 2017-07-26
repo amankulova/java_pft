@@ -17,7 +17,7 @@ public class ContactPhoneTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().homePage();
+    app.goTo().contactPage();
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData()
               .withFirstname("тест")
@@ -31,7 +31,7 @@ public class ContactPhoneTest extends TestBase {
 
   @Test
   public void testContactPhones() {
-    app.goTo().homePage();
+    app.goTo().contactPage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
