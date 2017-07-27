@@ -66,7 +66,7 @@ public class ContactAdditionToGroup extends TestBase {
      assertThat(groupAfter, equalTo(beforeAddedGroups));
 
 
-       
+
 
 
     }
