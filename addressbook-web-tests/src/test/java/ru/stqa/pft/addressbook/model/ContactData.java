@@ -70,11 +70,7 @@ public class ContactData {
   @Transient
   private String address;
 
-  public Groups getGroups() {
-    return new Groups(groups);
-  }
-
-  @ManyToMany(fetch = FetchType.EAGER)
+   //@ManyToMany(fetch = FetchType.EAGER)
     public ContactData inGroup(GroupData group) {
     groups.add ( group );
     return this;
@@ -102,7 +98,6 @@ public class ContactData {
     this.address = address;
     return this;
   }
-
 
   public String getAllEmails() {
     return allEmails;
@@ -209,6 +204,9 @@ public class ContactData {
     return lastname;
   }
 
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
 
   @Override
   public String toString() {
