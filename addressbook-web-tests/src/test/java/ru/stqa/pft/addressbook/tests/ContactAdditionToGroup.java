@@ -1,7 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -15,13 +13,13 @@ public class ContactAdditionToGroup extends TestBase {
   public void ensurePreconditions() {
     app.goTo().groupPage();
     if (app.group().all().size() == 0) {
-      app.group().create(new GroupData().withName("test4"));
+      app.group().create(new GroupData().withName("друзья"));
     }
 
     app.goTo().contactPage();
     Groups groups = app.db().groups();
     if (app.db().contacts().size() == 0) {
-      app.contact().create(new ContactData().withLastname("Elton").withFirstname("John").withAddress("5 Avenue"));
+      app.contact().create(new ContactData().withLastname("Аман").withFirstname("Гульжан").withAddress("Алматы"));
     }
   }
 
@@ -47,7 +45,7 @@ public class ContactAdditionToGroup extends TestBase {
     }
     if (!completed) {
       app.goTo().groupPage();
-      app.group().create(new GroupData().withName("test4").withHeader("test4").withFooter("test4"));
+      app.group().create(new GroupData().withName("коллеги").withHeader("по").withFooter("работе"));
       Groups extendedGroups = app.db().groups();
       GroupData lastAddedGroup = extendedGroups.stream()
               .max((g1, g2) -> Integer.compare(g1.getId(), g2.getId())).get();
@@ -57,7 +55,7 @@ public class ContactAdditionToGroup extends TestBase {
       beforeAddedGroups = beforeAdditionGroups.withAdded(lastAddedGroup);
 
     }
-   // Groups groupAfter = app.db().contactById(contactId).getGroups();
-   // MatcherAssert.assertThat(groupAfter, CoreMatchers.equalTo(beforeAddedGroups));
+    // Groups groupAfter = app.db().contactById(contactId).getGroups();
+    // MatcherAssert.assertThat(groupAfter, CoreMatchers.equalTo(beforeAddedGroups));
   }
 }

@@ -22,10 +22,6 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-
-
-
-
   public void addition(ContactData contact, GroupData group) {
     app.goTo().contactPage();
     selectContactById(contact.getId());
@@ -65,11 +61,6 @@ public class ContactHelper extends HelperBase {
   private void SelectedGroupById(String id) {
     new Select(wd.findElement(By.name("group"))).selectByValue(id);
   }
-
-
-
-
-
 
 
   public void submitContactCreation() {
@@ -211,7 +202,6 @@ public class ContactHelper extends HelperBase {
       return false;
     }
   }
-
 
 
 }
