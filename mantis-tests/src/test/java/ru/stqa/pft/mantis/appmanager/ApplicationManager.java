@@ -14,9 +14,11 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   private final Properties properties;
+
   private WebDriver wd;
 
   private String browser;
+  private RegistrationHelper registrationHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -41,21 +43,16 @@ public class ApplicationManager {
   public String getProperty(String key) {
     return properties.getProperty(key);
   }
-/*
+
   public RegistrationHelper registration() {
     if (registrationHelper == null) {
       registrationHelper = new RegistrationHelper(this);
+
     }
     return registrationHelper;
-  }
-
-  public FtpHelper ftp() {
-    if (ftp == null) {
-      ftp = new FtpHelper(this);
     }
-    return ftp;
-  }
-*/
+
+
   public WebDriver getDriver() {
     if (wd == null) {
       if (browser.equals(BrowserType.FIREFOX)) {
@@ -70,6 +67,8 @@ public class ApplicationManager {
     }
     return wd;
   }
+
+
 /*
   public MailHelper mail() {
     if (mailHelper == null) {
