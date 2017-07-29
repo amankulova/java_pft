@@ -1,34 +1,26 @@
 apply plugin: 'java'
 
-repositories {
-    mavenCentral()
+        repositories {
+               mavenCentral()
+            }
 
-    dependencies {
-        compile 'org.testng:testng:6.11'
-        compile 'org.seleniumhq.selenium:selenium-java:3.4.0'
-        compile 'org.hamcrest:java-hamcrest:2.0.0.0'
-        compile 'commons-net:commons-net:3.6'
-        compile 'org.subethamail:subethasmtp:3.1.7'
-        compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
-        compile 'ch.qos.logback:logback-classic:1.1.5'
-
-
-    }
-
-    test {
-
-        useTestNG {
-            suites 'src/test/resources/testng-groups.xml'
+        dependencies {
+            compile 'org.testng:testng:6.9.10'
+            compile 'org.seleniumhq.selenium:selenium-java:2.52.0'
+            compile 'org.hamcrest:java-hamcrest:2.0.0.0'
         }
-        if (project.hasProperty('browser')) {
-            systemProperty 'browser', "${browser}"
-        }
-        if (project.hasProperty('target')) {
-            systemProperty 'target', "${target}"
-        }
-        if (project.hasProperty('verifyUI')) {
-            systemProperty 'verifyUI', "${verifyUI}"
-        }
-    }
 
-}
+        test {
+                useTestNG {
+                        suites 'src/test/resources/testng.xml'
+                    }
+                if (project.hasProperty('browser')) {
+                        systemProperty 'browser', "${browser}"
+                    }
+                if (project.hasProperty('target')) {
+                        systemProperty 'target', "${target}"
+                    }
+                if (project.hasProperty('verifyUI')) {
+                        systemProperty 'verifyUI', "${verifyUI}"
+                    }
+            }
