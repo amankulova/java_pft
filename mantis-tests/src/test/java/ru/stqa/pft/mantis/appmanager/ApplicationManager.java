@@ -54,7 +54,7 @@ public class ApplicationManager {
 
     }
     return registrationHelper;
-    }
+  }
 
 
   public WebDriver getDriver() {
@@ -76,7 +76,7 @@ public class ApplicationManager {
     if (ftp == null) {
       ftp = new FtpHelper(this);
     }
-  return ftp;
+    return ftp;
   }
 
 
