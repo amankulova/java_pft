@@ -63,7 +63,7 @@ public class ContactAdditionToGroup extends TestBase {
 
 
     Groups groupAfter = app.db().contactById(contactId).iterator().next().getGroups();
-     assertThat(groupAfter, equalTo(beforeAddedGroups));
+     assertThat(groupAfter, equalTo(beforeAddedGroups)); // сравнение добавлено
 
 
 
