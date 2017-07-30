@@ -3,6 +3,7 @@ package ru.stqa.pft.mantis.appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
@@ -19,6 +20,7 @@ public class ApplicationManager {
 
   private String browser;
   private RegistrationHelper registrationHelper;
+  private FtpHelper ftp;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -56,7 +58,7 @@ public class ApplicationManager {
   public WebDriver getDriver() {
     if (wd == null) {
       if (browser.equals(BrowserType.FIREFOX)) {
-        wd = new FirefoxDriver();
+        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
       } else if (browser.equals(BrowserType.CHROME)) {
         wd = new ChromeDriver();
       } else if (browser.equals(BrowserType.IE)) {
@@ -68,6 +70,12 @@ public class ApplicationManager {
     return wd;
   }
 
+  public FtpHelper ftp() {
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
+    }
+  return ftp;
+  }
 
 /*
   public MailHelper mail() {
