@@ -10,19 +10,23 @@ import org.openqa.selenium.remote.BrowserType;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+
 public class ApplicationManager {
+
   private final Properties properties;
-
   private WebDriver wd;
-
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private NavigationHelper navigationHelper;
+  private ResetPasswordHelper resetPassword;
+  private DbHelper db;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -51,25 +55,8 @@ public class ApplicationManager {
   public RegistrationHelper registration() {
     if (registrationHelper == null) {
       registrationHelper = new RegistrationHelper(this);
-
     }
     return registrationHelper;
-  }
-
-
-  public WebDriver getDriver() {
-    if (wd == null) {
-      if (browser.equals(BrowserType.FIREFOX)) {
-        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-      } else if (browser.equals(BrowserType.CHROME)) {
-        wd = new ChromeDriver();
-      } else if (browser.equals(BrowserType.IE)) {
-        wd = new InternetExplorerDriver();
-      }
-      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-      wd.get(properties.getProperty("web.baseUrl"));
-    }
-    return wd;
   }
 
   public FtpHelper ftp() {
@@ -79,6 +66,27 @@ public class ApplicationManager {
     return ftp;
   }
 
+  public DbHelper db() {
+    if (db == null) {
+      db = new DbHelper(this);
+    }
+    return db;
+  }
+
+  public WebDriver getDriver() {
+    if (wd == null) {
+      if (Objects.equals(browser, BrowserType.FIREFOX)) {
+        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+      } else if (Objects.equals(browser, BrowserType.CHROME)) {
+        wd = new ChromeDriver();
+      } else if (Objects.equals(browser, BrowserType.IE)) {
+        wd = new InternetExplorerDriver();
+      }
+      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+      wd.get(properties.getProperty("web.baseUrl"));
+    }
+    return wd;
+  }
 
   public MailHelper mail() {
     if (mailHelper == null) {
@@ -87,12 +95,26 @@ public class ApplicationManager {
     return mailHelper;
   }
 
-
   public JamesHelper james() {
     if (jamesHelper == null) {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
   }
+
+  public ResetPasswordHelper resetPassword() {
+    if (resetPassword == null) {
+      resetPassword = new ResetPasswordHelper(this);
+    }
+    return resetPassword;
+  }
+
+  public NavigationHelper goTo() {
+    if (navigationHelper == null) {
+      navigationHelper = new NavigationHelper(this);
+    }
+    return navigationHelper;
+  }
+
 
 }

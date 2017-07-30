@@ -12,6 +12,11 @@ apply plugin: 'java'
             compile 'commons-net:commons-net:3.6'
             compile 'org.subethamail:subethasmtp:3.1.7'
             compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
+            compile 'org.hibernate:hibernate-core:5.2.10.Final'
+            compile 'mysql:mysql-connector-java:5.1.38'
+
+
+
         }
 
         test {

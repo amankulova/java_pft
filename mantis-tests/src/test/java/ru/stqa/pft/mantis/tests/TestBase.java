@@ -8,7 +8,6 @@ import ru.stqa.pft.mantis.appmanager.ApplicationManager;
 import java.io.File;
 import java.io.IOException;
 
-
 public class TestBase {
 
   protected static final ApplicationManager app
@@ -27,5 +26,4 @@ public class TestBase {
     app.stop();
 
   }
-
 }
