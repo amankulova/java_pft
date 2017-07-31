@@ -34,6 +34,7 @@ public class ResertPassword extends TestBase {
     List<MailMessage> mailMessages = app.mail().waitForMail(1, 100000);
     String email = user + "@localhost.localdomain";
     String confirmationLink = findConfirmationLink(mailMessages, email); // читает ссылку для смены пароля - работает
+
     String newPassword = String.valueOf(System.currentTimeMillis());
     app.resetPassword().finish(confirmationLink, newPassword);
     assertTrue(app.newSession().login(user, newPassword));
