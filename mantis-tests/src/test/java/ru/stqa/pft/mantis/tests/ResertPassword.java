@@ -1,5 +1,6 @@
 package ru.stqa.pft.mantis.tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -23,21 +24,21 @@ public class ResertPassword extends TestBase {
   @Test
   public void testResetPassword() throws IOException, MessagingException {
 
-    app.goTo().login("administrator", "root");
-    //app.goTo().manage(); //нажать на Manage - не работает
+    app.goTo().login(); // логин из файла - работает
+    app.goTo().manage(); //нажать на Manage - работает
     app.goTo().usersManage(); //нажать на Manage Users - переходит
 
-    String user = app.db().getUserName(); //Выбор одного пользователя из базы -  работает
-    app.resetPassword().select(user);
+   String user = app.db().getUserName(); //Выбор одного пользователя из базы -  работает
+   app.resetPassword().select(user);
 
-    app.resetPassword().resert(); // нажать на Reset Password - работает
-    List<MailMessage> mailMessages = app.mail().waitForMail(1, 100000);
-    String email = user + "@localhost.localdomain";
-    String confirmationLink = findConfirmationLink(mailMessages, email); // читает ссылку для смены пароля - работает
+   app.resetPassword().resert(); // нажать на Reset Password - работает
+   List<MailMessage> mailMessages = app.mail().waitForMail(1, 100000);
+   String email = user + "@localhost.localdomain";
+   String confirmationLink = findConfirmationLink(mailMessages, email); // читает ссылку для смены пароля - работает
 
-    String newPassword = String.valueOf(System.currentTimeMillis());
-    app.resetPassword().finish(confirmationLink, newPassword);
-    assertTrue(app.newSession().login(user, newPassword));
+   String newPassword = String.valueOf(System.currentTimeMillis());
+   app.resetPassword().finish(confirmationLink, newPassword);
+   assertTrue(app.newSession().login(user, newPassword));
 
 
 

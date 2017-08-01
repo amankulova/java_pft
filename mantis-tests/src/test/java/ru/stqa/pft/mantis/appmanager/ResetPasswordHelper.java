@@ -26,9 +26,7 @@ public class ResetPasswordHelper extends HelperBase {
     wd.get(confirmationLink);
     type(By.name("password"), password);
     type(By.name("password_confirm"), password);
-   // click(By.xpath("//button[@type='submit']"));
     click(By.xpath("//form[@action='account_update.php']//input[@type='submit']"));
-    //click(By.xpath("//input[@type='submit']"));
 
   }
 }
