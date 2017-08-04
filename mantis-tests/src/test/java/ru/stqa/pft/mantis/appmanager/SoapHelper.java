@@ -13,14 +13,11 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Created by popovaa on 10.07.2017.
- */
 public class SoapHelper {
 
   private ApplicationManager app;
 
-  public SoapHelper (ApplicationManager app) {
+  public SoapHelper(ApplicationManager app) {
     this.app = app;
   }
 
@@ -30,12 +27,10 @@ public class SoapHelper {
     return Arrays.asList(projects).stream()
             .map((p) -> new Project().withId(p.getId().intValue()).withName(p.getName()))
             .collect(Collectors.toSet());
-
   }
 
   private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
-    //return new MantisConnectLocator().getMantisConnectPort(new URL("http://localhost/mantisbt-2.5.1/api/soap/mantisconnect.php"));
-    return new MantisConnectLocator().getMantisConnectPort(new URL(app.getProperty("web.URL"))); // путь к сайту прописан в local.properties
+    return new MantisConnectLocator().getMantisConnectPort(new URL(app.getProperty("web.URL"))); // путь прописан в local.properties
   }
 
   public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
