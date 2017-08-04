@@ -1,7 +1,10 @@
 package ru.stqa.pft.mantis.model;
 
-
+/**
+ * Created by popovaa on 10.07.2017.
+ */
 public class Project {
+
   private int id;
   private String name;
 
@@ -21,6 +24,5 @@ public class Project {
   public Project withName(String name) {
     this.name = name;
     return this;
-
   }
 }
