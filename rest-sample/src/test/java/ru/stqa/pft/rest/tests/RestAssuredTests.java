@@ -1,50 +1,46 @@
 package ru.stqa.pft.rest.tests;
 
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.stqa.pft.rest.model.Issue;
 
 import java.io.IOException;
 import java.util.Set;
 
-import static org.testng.Assert.assertEquals;
-
-public class RestAssuredTests {
+public class RestAssuredTests extends TestBase {
 
   @BeforeClass
-  public void init() {
-    RestAssured.authentication = RestAssured.basic("LSGjeU4yP1X493ud1hNniA==", "");
+  public void init(){
+    RestAssured.authentication = RestAssured.basic("LSGjeU4yP1X493ud1hNniA==","");
   }
-
   @Test
   public void testCreateIssue() throws IOException {
+    skipIfNotFixed(5);
     Set<Issue> oldIssues = getIssues();
     Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
-    int issueId = create(newIssue);
+    int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
-    oldIssues.add(newIssue.whitId(issueId));
-    assertEquals(newIssues, oldIssues);
+    oldIssues.add(newIssue.withId(issueId));
+    Assert.assertEquals(newIssues, oldIssues);
   }
-
   private Set<Issue> getIssues() throws IOException {
     String json = RestAssured.get("http://demo.bugify.com/api/issues.json").asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
-    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
-    }.getType());
+    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
   }
 
-  private int create(Issue issue) throws IOException {
-    String json = RestAssured.given().parameter("subject", issue.getSubject())
-            .parameter("description", issue.getDescription())
+  private int createIssue(Issue newIssue) throws IOException {
+    String json = RestAssured.given().parameter("subject", newIssue.getSubject())
+            .parameter("description", newIssue.getDescription())
             .post("http://demo.bugify.com/api/issues.json").asString();
     JsonElement parsed = new JsonParser().parse(json);
     return parsed.getAsJsonObject().get("issue_id").getAsInt();
   }
-
 }
