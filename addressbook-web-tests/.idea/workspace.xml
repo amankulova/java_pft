@@ -1,65 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42aea8e8-b71e-4bc1-8d23-860854be25bf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_2_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_2_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__mysql_mysql_connector_java_5_1_42.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_25.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/remote.properties" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_thoughtworks_xstream_xstream_benchmark_1_4_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_thoughtworks_xstream_xstream_hibernate_1_4_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_thoughtworks_xstream_xstream_jmh_1_4_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_jopt_simple_jopt_simple_4_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_min_2_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_math3_3_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_jettison_jettison_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_woodstox_wstx_asl_3_2_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jdom_jdom2_2_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jdom_jdom_1_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjdk_jmh_jmh_core_1_19.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__stax_stax_1_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__stax_stax_api_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__xom_xom_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/.gradle/buildOutputCleanup/cache.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/.idea/sandbox.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/main/MyFirstProgram1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/main/ru/stqa/pft/sandbox/MyFirstProgram.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/main/ru/stqa/pft/sandbox/Point.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/main/ru/stqa/pft/sandbox/Rectangle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/main/ru/stqa/pft/sandbox/Square.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/test/ru/stqa/pft/sandbox/PointErrorTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/test/ru/stqa/pft/sandbox/PointErrorTest2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/test/ru/stqa/pft/sandbox/PointTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/classes/test/ru/stqa/pft/sandbox/SquareTests.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/distributions/sandbox.tar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/distributions/sandbox.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/libs/sandbox.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/scripts/sandbox" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/scripts/sandbox.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/build/tmp/jar/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/gradlew" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/gradlew.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/main/java/ru/stqa/pft/sandbox/MyFirstProgram.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/main/java/ru/stqa/pft/sandbox/Point.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/main/java/ru/stqa/pft/sandbox/Rectangle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/main/java/ru/stqa/pft/sandbox/Square.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/test/java/ru/stqa/pft/sandbox/PointErrorTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/test/java/ru/stqa/pft/sandbox/PointErrorTest2.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/test/java/ru/stqa/pft/sandbox/PointTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sandbox/src/test/java/ru/stqa/pft/sandbox/SquareTests.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/addressbook-web-tests_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/addressbook-web-tests_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/addressbook-web-tests_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/addressbook-web-tests_test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/local.properties" afterPath="$PROJECT_DIR$/src/test/resources/local.properties" />
-    </list>
+    <list default="true" id="42aea8e8-b71e-4bc1-8d23-860854be25bf" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/../mantis-tests/.gradle/" />
@@ -121,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApplicationManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -131,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="remote.properties" pinned="false" current-in-tab="false">
+      <file leaf-file-name="remote.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/resources/remote.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="37" lean-forward="false" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+              <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -3111,18 +3053,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/remote.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="37" lean-forward="false" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="57" column="21" lean-forward="false" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/remote.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding />
         </state>
       </provider>
