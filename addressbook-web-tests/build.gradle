@@ -1,62 +1,66 @@
 apply plugin: 'java'
 
-
 repositories {
     mavenCentral()
 }
 
-dependencies {
+configurations {
+    agent
+}
 
-    compile 'org.testng:testng:6.11'
-    compile 'org.seleniumhq.selenium:selenium-java:3.4.0'
+dependencies {
+    compile 'org.testng:testng:6.9.10'
+    compile 'org.seleniumhq.selenium:selenium-java:2.52.0'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
-    compile 'com.beust:jcommander:1.72'
-    compile 'com.thoughtworks.xstream:xstream:1.4.10'
-    compile 'com.google.code.gson:gson:2.8.1'
-    compile 'ch.qos.logback:logback-classic:1.2.3'
-    compile 'mysql:mysql-connector-java:5.1.42'
-    compile 'org.hibernate:hibernate-core:5.2.10.Final'
+    compile 'com.beust:jcommander:1.48'
+    compile 'com.thoughtworks.xstream:xstream:1.4.8'
+    compile 'com.google.code.gson:gson:2.6.1'
+    compile 'ch.qos.logback:logback-classic:1.1.5'
+    compile 'mysql:mysql-connector-java:5.1.38'
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    agent "org.aspectj:aspectjweaver:1.8.0"
+    compile "ru.yandex.qatools.allure:allure-testng-adaptor:1.4.0.RC4"
+    compile 'org.robotframework:robotframework:3.0'
+    compile 'info.cukes:cucumber-java:1.2.4'
+    compile 'info.cukes:cucumber-testng:1.2.4'
 }
 
 task testGroups(type: Test) {
-    useTestNG{
+    useTestNG {
         suites 'src/test/resources/testng-groups.xml'
     }
-    if (projects.hasProperty('browser')) {
+    if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
     }
-    if (projects.hasProperty('platform')) {
+    if (project.hasProperty('platform')) {
         systemProperty 'platform', "${platform}"
     }
-    if (projects.hasProperty('target')) {
+    if (project.hasProperty('target')) {
         systemProperty 'target', "${target}"
     }
-    if (projects.hasProperty('verifyUI')) {
+    if (project.hasProperty('verifyUI')) {
         systemProperty 'verifyUI', "${verifyUI}"
     }
+}
+
+testGroups.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
 }
 
 task testContacts(type: Test) {
-
-    useTestNG{
+    useTestNG {
         suites 'src/test/resources/testng-contacts.xml'
     }
-    if (projects.hasProperty('browser')) {
+    if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
     }
-    if (projects.hasProperty('target')) {
-        systemProperty 'target', "${target}"
-    }
-
-    if (projects.hasProperty('verifyUI')) {
-        systemProperty 'verifyUI', "${verifyUI}"
-    }
-    if (projects.hasProperty('platform')) {
+    if (project.hasProperty('platform')) {
         systemProperty 'platform', "${platform}"
     }
-}
-
-test {
-
-    useTestNG()
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('verifyUI')) {
+        systemProperty 'verifyUI', "${verifyUI}"
+    }
 }
