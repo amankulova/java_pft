@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
  */
 public class PointErrorTest {
 
-@Test
+@Test(enabled = false)
 public void testDistance() {
   Point p1 = new Point(5, 9);
   Point p2 = new Point(22, 34);
